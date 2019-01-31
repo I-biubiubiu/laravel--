@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Post;
 
 class PostController extends Controller
 {
     // 文章列表页面
     public function index() {
-        return view("post/index");
+        $posts = Post::orderBy("created_at", "desc")->paginate(6);
+        return view("post/index", compact('posts'));
     }
 
     // 文章详情页面
-    public function show() {
-        return view("post/show");
+    public function show(Post $post) {
+        return view("post/show", compact('post'));
     }
 
     // 文章创建页面
@@ -23,7 +25,8 @@ class PostController extends Controller
 
     // 文章创建逻辑
     public function store() {
-
+        $posts = Post::create(request(['title', 'content']));
+        return redirect("/posts");
     }
 
     // 文章编辑页面
