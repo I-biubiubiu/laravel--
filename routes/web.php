@@ -15,6 +15,21 @@
 //     return view('welcome');
 // });
 
+// 用户模块
+// 注册页面
+Route::get('/register', '\App\Http\Controllers\RegisterController@index');
+// 注册行为
+Route::post('/register', '\App\Http\Controllers\RegisterController@register');
+// 登陆页面
+Route::get('/login', '\App\Http\Controllers\LoginController@index');
+// 登出行为
+Route::post('/logout', '\App\Http\Controllers\LoginController@logout');
+// 个人设置页面
+Route::get('/user/me/setting', '\App\Http\Controllers\UserController@setting');
+// 个人设置操作
+Route::post('/user/me/setting', '\App\Http\Controllers\UserController@settingStore');
+
+
 
 // 文章列表页
 Route::get('/posts', '\App\Http\Controllers\PostController@index');
