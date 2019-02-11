@@ -8,7 +8,8 @@ class UserController extends Controller
 {
     // 个人设置页面
     public function setting() {
-        return view('user.setting');
+        $user = \Auth::user();
+        return view('user.setting', compact('user'));
     }
 
     // 个人设置行为

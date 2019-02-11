@@ -30,7 +30,9 @@ class PostController extends Controller
             'title' => 'required|string|max:100|min:5',
             'content' => 'required|string|min:10'
         ]);
-        $posts = Post::create(request(['title', 'content']));
+        $user_id = \Auth::id();
+        $params = array_merge(request(['title', 'content']), compact('user_id'));
+        $posts = Post::create($params);
         return redirect("/posts");
     }
 
@@ -46,6 +48,7 @@ class PostController extends Controller
             'title' => 'required|string|max:100|min:5',
             'content' => 'required|string|min:10'
         ]);
+        $this->authorize('update', $post);
         $post->title = request('title');
         $post->content = request('content');
         $post->save();
@@ -54,6 +57,7 @@ class PostController extends Controller
 
     // 文章删除逻辑
     public function delete(Post $post) {
+        $this->authorize('delete', $post);
         $post->delete();
         return redirect("/posts");
     }
