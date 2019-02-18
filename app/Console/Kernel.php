@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ESInit;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\ESInit::class,
+        //
+        \App\Console\Commands\ESInit::class
     ];
 
     /**
@@ -29,12 +31,13 @@ class Kernel extends ConsoleKernel
     }
 
     /**
-     * Register the Closure based commands for the application.
+     * Register the commands for the application.
      *
      * @return void
      */
     protected function commands()
     {
+
         require base_path('routes/console.php');
     }
 }

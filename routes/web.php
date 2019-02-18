@@ -34,6 +34,8 @@ Route::group(['middleware' => 'auth:web'], function(){
     // 个人设置操作
     Route::post('/user/me/setting', '\App\Http\Controllers\UserController@settingStore');
 
+    // 文章搜索也
+    Route::get('/posts/search', '\App\Http\Controllers\PostController@search');
 
 
     // 文章列表页
@@ -58,6 +60,15 @@ Route::group(['middleware' => 'auth:web'], function(){
     Route::get('/posts/{post}/zan', '\App\Http\Controllers\PostController@zan');
     // 取消点赞
     Route::get('/posts/{post}/unzan', '\App\Http\Controllers\PostController@unzan');
+
+
+    // 个人中心
+    Route::get('/user/{user}', '\App\Http\Controllers\UserController@show');
+    // 关注
+    Route::post('/user/{user}/fan', '\App\Http\Controllers\UserController@fan');
+    // 取消关注
+    Route::post('/user/{user}/unfan', '\App\Http\Controllers\UserController@unfan');
+    
 });
 
 
