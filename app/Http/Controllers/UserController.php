@@ -48,7 +48,7 @@ class UserController extends Controller
 
         // 这个人关注的用户,包含关注用户的 关注/粉丝/文章数
         $stars = $user->stars;
-        $susers = User::whereIn('id', $stars->pluck('stars_id'))->withCount(['stars', 'fans', 'posts'])->get();
+        $susers = User::whereIn('id', $stars->pluck('star_id'))->withCount(['stars', 'fans', 'posts'])->get();
 
         // 这个人的粉丝用户,包含粉丝用户的 关注/粉丝/文章数
         $fans = $user->fans;

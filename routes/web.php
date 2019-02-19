@@ -69,6 +69,12 @@ Route::group(['middleware' => 'auth:web'], function(){
     // 取消关注
     Route::post('/user/{user}/unfan', '\App\Http\Controllers\UserController@unfan');
     
+
+    // 专题详情页
+    Route::get('/topic/{topic}', '\App\Http\Controllers\TopicController@show');
+    // 投稿
+    Route::post('/topic/{topic}/submit', '\App\Http\Controllers\TopicController@submit');
+
 });
 
 
