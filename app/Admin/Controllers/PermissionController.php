@@ -25,6 +25,6 @@ class PermissionController extends Controller
         ]);
 
         \App\AdminPermission::create(request(['name', 'description']));
-        return redurect('/admin/permissions');
+        return redirect('/admin/permissions');
     }
 }

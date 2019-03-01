@@ -12,34 +12,30 @@
                     <div class="box">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">角色列表</h3>
+                            <h3 class="box-title">专题列表</h3>
                         </div>
-                        <a type="button" class="btn " href="/admin/roles/create">增加角色</a>
+                        <a type="button" class="btn " href="/admin/topics/create">增加专题</a>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <table class="table table-bordered">
                                 <tbody>
                                     <tr>
                                         <th style="width: 10px">#</th>
-                                        <th>角色名称</th>
-                                        <th>角色描述</th>
+                                        <th>专题名称</th>
                                         <th>操作</th>
                                     </tr>
-                                    @foreach($roles as $role)
+                                    @foreach($topics as $topic)
                                     <tr>
-                                        <td>{{$role->id}}</td>
-                                        <td>{{$role->name}}</td>
-                                        <td>{{$role->description}}</td>
+                                        <td>{{$topic->id}}</td>
+                                        <td>{{$topic->name}}</td>
                                         <td>
-                                            <a type="button" class="btn" href="/admin/roles/{{$role->id}}/permission">权限管理</a>
+                                            <a type="button" class="btn resource-delete" delete-url="/admin/topics/{{$topic->id}}" href="#">删除</a>
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{$roles->links()}}
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -47,3 +43,4 @@
         <!-- /.content -->
     </div>
 @endsection
+    

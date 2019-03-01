@@ -35,12 +35,12 @@ class UserController extends Controller
     // 用户角色页面
     public function role(AdminUser $user) {
         $roles = \App\AdminRole::all();
-        $myRole = $user->roles;
+        $myRoles = $user->roles;
         return view("/admin/user/role", compact('roles', 'myRoles', 'user'));
     }
 
     // 储存用户角色
-    public function storeRole() {
+    public function storeRole(AdminUser $user) {
         $this->validate(request(), [
             'roles' => 'required|array'
         ]);

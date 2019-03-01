@@ -10,7 +10,7 @@ class AdminRole extends Model
 
     // 当前角色的所有权限
     public function permissions() {
-        return $this->belongsToMany(\App\AdminPermission::class, 'admin_permission_role', 'role_id', 'permission_id')->withPivot(['permission_id', 'role_id']);
+        return $this->belongsToMany(\App\AdminPermission::class, 'admin_permissions_role', 'role_id', 'permission_id')->withPivot(['permission_id', 'role_id']);
     }
 
     // 给角色富裕权限
