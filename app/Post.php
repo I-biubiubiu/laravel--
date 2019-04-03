@@ -25,7 +25,7 @@ class Post extends Model
 
     // 关联用户
     public function user() {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     // 评论模型

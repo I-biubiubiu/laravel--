@@ -32,7 +32,7 @@ class SendMessage implements ShouldQueue
     public function handle()
     {
         // 通知每个用户系统消息
-        $users = \App\User::all();
+        $users = \App\Models\User::all();
         foreach($users as $user) {
             $user->addNotice($this->notice);
         }
